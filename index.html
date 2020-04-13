@@ -44,15 +44,21 @@
 			display: block;
 			float:left;
 			width: 20%;
+			height: auto;
 			margin: 1%;
 			padding: 2%;
 			border: 1px solid #ccc;
 			background-color: #fff;
 		}
+		img {
+			width: 100%;
+			height: auto;
+		}
 		.caja2 {
 			display: block;
 			float:right;
 			width: 67%;
+			height: auto;
 			margin: 1%;
 			padding: 2%;
 			border: 1px solid #ccc;
@@ -69,7 +75,7 @@
 			border-bottom: 1px solid #ccc;
 			background-color: red;
 			background-image: url(https://images.vexels.com/media/users/3/176068/isolated/lists/72fe58cee2430e849c2629ab3c952d0f-insignia-de-fonendoscopio-del-corazon.png);
-			
+			background-position: center;
 		}
 		h2 {
 			margin-bottom: 10px;
@@ -92,7 +98,7 @@
 			height: auto;
 			font-family: monospace;
 		}
-		
+				
         </style>
         <title> Emergencias </title>
 		
@@ -114,14 +120,16 @@
 			</textarea>
 			<button id="cargar">Cargar datos</button>
         <img src="https://2.bp.blogspot.com/-EuySqYo2qos/VrLCou_OxjI/AAAAAAAAAGg/oYfPeu2_MMs/s1600/2clcwk.jpg" 
-		alt="Funny image" height="200" width="200" align="middle">
+		 width="960" height="640"  />
 		</div>
 		</div>
 		
 		<div class='caja2'>
 			<div id="map"></div>
 		</div>
-	<textarea id="opciones" readonly=true>
+
+<div>
+	<textarea id="opciones" style="display:none">
 	L.geoCsv(null,{
 	  titles: ['lat', 'lng', 'popup'],
 	  fieldSeparator: ';',
@@ -137,6 +145,8 @@
 		layer.bindPopup(popup);
 	  }
 	});</textarea>
+</div>
+
 
 		
 		
@@ -187,10 +197,7 @@
             }
         }
 		
-		var opciones_editor = CodeMirror.fromTextArea(document.getElementById("opciones"), {
-			  lineNumbers: true,
-			  matchBrackets: true,
-			  mode: "text/typescript"});
+
 		  
 		var csv_editor = CodeMirror.fromTextArea(document.getElementById("csv"), {lineNumbers: true});
 
@@ -244,7 +251,7 @@
 
 		function cargar() {
 		  //guardamos los cambios del usuario en sus respectivos textarea
-		  opciones_editor.save();
+		  
 		  csv_editor.save();
 		  //borramos la capa geo_csv del mapa
 		  map.removeLayer(geo_csv);
