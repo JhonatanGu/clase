@@ -4,11 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
-        <meta name="mobile-web-app-capable" content="yes">
+       <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-		  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-		  crossorigin=""/>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css">
 		
 		
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
@@ -17,28 +15,51 @@
         <link rel="stylesheet" href="css/leaflet-search.css">
 		
       <!-- Leaflet 0.5: https://github.com/CloudMade/Leaflet-->
-		<link rel="stylesheet" href="lib/leaflet.css" />
+		<link rel="stylesheet" href="csv/lib/leaflet.css" />
 		<!--[if lte IE 8]> <link rel="stylesheet" href="../../lib/leaflet.ie.css" />  <![endif]-->  
-		<script src="lib/leaflet.js"></script>
+		<script src="csv/lib/leaflet.js"></script>
 		
 	
 
 		<!-- CodeMirror -->
-		<link rel="stylesheet" href="lib/codemirror/codemirror.css">
-		<script src="lib/codemirror/codemirror.js"></script>
-		<script src="lib/codemirror/util/matchbrackets.js"></script>
-		<script src="lib/codemirror/mode-javascript.js"></script>
+		<link rel="stylesheet" href="csv/lib/codemirror/codemirror.css">
+		<script src="csv/lib/codemirror/codemirror.js"></script>
+		<script src="csv/lib/codemirror/util/matchbrackets.js"></script>
+		<script src="csv/lib/codemirror/mode-javascript.js"></script>
 		<!-- GeoCSV: https://github.com/joker-x/Leaflet.geoCSV -->
-		<script src="lib/leaflet.geocsv-src.js"></script>
+		<script src="leaflet.geocsv-src.js"></script>
        
 
 	   <style>
-        html, body, #map {
-			float: right
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
+        html, body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			background-color: #eee;
+		}
+		a {
+			text-decoration: none;
+		}
+		.caja {
+			display: block;
+			float:left;
+			width: 20%;
+			margin: 1%;
+			padding: 2%;
+			border: 1px solid #ccc;
+			background-color: #fff;
+		}
+		.caja2 {
+			display: block;
+			float:right;
+			width: 67%;
+			margin: 1%;
+			padding: 2%;
+			border: 1px solid #ccc;
+			background-color: #fff;
+		}
+		#map {
+			height: 300px
         }
 		
 		h1 {
@@ -48,23 +69,13 @@
 			border-bottom: 1px solid #ccc;
 			background-color: red;
 			background-image: url(https://images.vexels.com/media/users/3/176068/isolated/lists/72fe58cee2430e849c2629ab3c952d0f-insignia-de-fonendoscopio-del-corazon.png);
-			background-position: center center;
+			
 		}
 		h2 {
 			margin-bottom: 10px;
 		}
-		h3 {
-			width: 310px;
-			height: 310px;
-			background-image: url(https://2.bp.blogspot.com/-EuySqYo2qos/VrLCou_OxjI/AAAAAAAAAGg/oYfPeu2_MMs/s1600/2clcwk.jpg);
-			background-position: right slow;
-		}
-		.caja {
-			display: block;
-			float:left;
-			width: 24%;
-			background-color: red;
-		}
+
+		
 		textarea {
 			clear: both;
 			width: 310px;
@@ -95,42 +106,41 @@
 
 			<h2>CSV</h2>
 			<textarea id="csv">
-48.8566;2.3522;París, capital de Francia
-40.4168;-3.7038;Madrid, capital de España
-41.9015;12.4608;Roma, capital de Italia
-37.9837;23.7293;Atenas, capital de Grecia
+3.374626;-76.533165;Universidad del Valle, Cali
+3.457049;-76.496086;Escuela de Aviacion MFS, Cali
+3.423999;-76.536255;Canchas Panamericanas, Cali
+3.406093;-76.520666;Coliseo MIU, Cali
 
 			</textarea>
 			<button id="cargar">Cargar datos</button>
-			<div class= "caja2"></div>
-			<h3></h3>
+        <img src="https://2.bp.blogspot.com/-EuySqYo2qos/VrLCou_OxjI/AAAAAAAAAGg/oYfPeu2_MMs/s1600/2clcwk.jpg" 
+		alt="Funny image" height="200" width="200" align="middle">
 		</div>
 		</div>
-		<div class="caja">
-			<div id="mapa"></div>
-		</div>
-
-	
-	
-			<div id="map"></div>
-        </div>
 		
-				<div id="opciones">
-		L.geoCsv(null,{
-		  titles: ['lat', 'lng', 'popup'],
-		  fieldSeparator: ';',
-		  lineSeparator: '\n',
-		  deleteDobleQuotes: true,
-		  firstLineTitles: false,
-		  onEachFeature: function (feature, layer) {
-			var popup = '';
-			for (var clave in feature.properties) {
-			  var title = geo_csv.getPropertyTitle(clave);
-			  popup += '<b>'+title+'</b><br />'+feature.properties[clave]+'<br /><br />';
-			}
-			layer.bindPopup(popup);
-		  }
-		});</div>
+		<div class='caja2'>
+			<div id="map"></div>
+		</div>
+	<textarea id="opciones" readonly=true>
+	L.geoCsv(null,{
+	  titles: ['lat', 'lng', 'popup'],
+	  fieldSeparator: ';',
+	  lineSeparator: '\n',
+	  deleteDobleQuotes: true,
+	  firstLineTitles: false,
+	  onEachFeature: function (feature, layer) {
+		var popup = '';
+		for (var clave in feature.properties) {
+		  var title = geo_csv.getPropertyTitle(clave);
+		  popup += '<b>'+title+'</b><br />'+feature.properties[clave]+'<br /><br />';
+		}
+		layer.bindPopup(popup);
+	  }
+	});</textarea>
+
+		
+		
+
 
 		
         <script src="js/qgis2web_expressions.js"></script>
@@ -152,6 +162,8 @@
         <script src="data/Equipamientos_salud_2.js"></script>
         <script src="data/ambulancias_3.js"></script>
 		<script src="data/perimetro_urbano_cali.js"></script>
+		<script src="lib/leaflet.browser.print.min.js"></script>
+		<script src="leaflet.geocsv.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
         <script>
 		
@@ -176,9 +188,9 @@
         }
 		
 		var opciones_editor = CodeMirror.fromTextArea(document.getElementById("opciones"), {
-		  lineNumbers: true,
-		  matchBrackets: true,
-		  mode: "text/typescript"});
+			  lineNumbers: true,
+			  matchBrackets: true,
+			  mode: "text/typescript"});
 		  
 		var csv_editor = CodeMirror.fromTextArea(document.getElementById("csv"), {lineNumbers: true});
 
@@ -190,22 +202,7 @@
 
 		ajusta_Altura();
 		
-		//dotamos de funcionalidad al botón cargar
-		var geo_csv = {};
 
-		function cargar() {
-		  //guardamos los cambios del usuario en sus respectivos textarea
-		  opciones_editor.save();
-		  csv_editor.save();
-		  //borramos la capa geo_csv del mapa
-		  map.removeLayer(geo_csv);
-		  //recreamos la capa con las nuevas opciones
-		  geo_csv = eval(document.getElementById('opciones').value);
-		  geo_csv.addData(document.getElementById('csv').value);
-		  map.addLayer(geo_csv);
-		}
-
-		document.getElementById('cargar').addEventListener('click', cargar, false);	
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
         }).fitBounds([[3.327235654507765,-76.7129322918559],[3.5102416747173115,-76.34094953985935]]);
@@ -238,6 +235,29 @@
 		var mapabase2barrios = L.tileLayer.wms('http://ws-idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0', {
 		layers: 'idesc:mc_barrios'
 		}).addTo(map);
+		
+		
+		
+		
+		//dotamos de funcionalidad al botón cargar
+		var geo_csv = {};
+
+		function cargar() {
+		  //guardamos los cambios del usuario en sus respectivos textarea
+		  opciones_editor.save();
+		  csv_editor.save();
+		  //borramos la capa geo_csv del mapa
+		  map.removeLayer(geo_csv);
+		  //recreamos la capa con las nuevas opciones
+		  geo_csv = eval(document.getElementById('opciones').value);
+		  geo_csv.addData(document.getElementById('csv').value);
+		  map.addLayer(geo_csv);
+		}
+
+		document.getElementById('cargar').addEventListener('click', cargar, false);	
+		
+		
+		
 		
 		
 		
@@ -628,7 +648,8 @@
         bounds_group.addLayer(layer_ambulancias_3);
         cluster_ambulancias_3.addTo(map);
 		
-
+		//plugin imprimir
+		L.control.browserPrint().addTo(map);
 	
 		var baseMaps = {};
 		
@@ -642,28 +663,7 @@
         document.getElementsByClassName('search-button')[0].className +=
          ' fa fa-binoculars';
 		 
-		 //dotamos de funcionalidad al botón cargar
-		var geo_csv = {};
-
-		function cargar() {
-		  //guardamos los cambios del usuario en sus respectivos textarea
-		  opciones_editor.save();
-		  csv_editor.save();
-		  //borramos la capa geo_csv del mapa
-		  map.removeLayer(geo_csv);
-		  //recreamos la capa con las nuevas opciones
-		  geo_csv = eval(document.getElementById('opciones').value);
-		  geo_csv.addData(document.getElementById('csv').value);
-		  map.addLayer(geo_csv);
-		}
-
-		document.getElementById('cargar').addEventListener('click', cargar, false);
-		 
-
-
 		
-
-
         </script>
     </body>
 </html>
