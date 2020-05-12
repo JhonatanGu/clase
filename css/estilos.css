@@ -88,7 +88,7 @@ h1, h2 {
 .todo .btnmap {
     display: block;
     position: absolute;
-    top: 65%;
+    top: 68%;
     width: 60px;
     height: 60px;
     left: 50%;
@@ -199,7 +199,7 @@ h1, h2 {
 }
 @media(min-width:100px){
     .contenedor2 {
-        margin-top: 20px;
+        margin-top: 30px;
     }
 
 }
