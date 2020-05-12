@@ -197,3 +197,9 @@ h1, h2 {
     }
 
 }
+@media(min-width:400px){
+    .contenedor2 {
+        margin-top: 20px;
+    }
+
+}
