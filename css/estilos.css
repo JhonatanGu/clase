@@ -1,0 +1,199 @@
+@import url(https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&family=Yanone+Kaffeesatz&display=swap);
+*{
+    box-sizing: border-box;
+}
+img {
+    display:block;
+    max-width: 100%;
+}
+
+body{
+    margin: 0;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+font-family: 'Open Sans', sans-serif;
+}
+h1, h2 {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    letter-spacing: 1px;
+}
+/*-----------------Estilos header------------*/
+.header {
+    height: 60px;
+    position: relative;
+    z-index: 1000;
+}
+.header .contenedor {
+    display: flex;
+    justify-content: space-between;
+}
+.logo, .icon-menu{
+    margin: 5px;
+    color: #fff;
+}
+.icon-menu {
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    background: #3F49DB;
+    text-align: center;
+    line-height: 45px;
+    border-radius: 5px;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+/*--------Estilos del menú---------*/
+.nav {
+    position: absolute;
+    top: 60px;
+    left: -100%;
+    width: 100%;
+    transition: all 0.4s;
+}
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.menu__link {
+    display: block;
+    padding: 15px;
+    background: #3F49DB;
+    text-decoration: none;
+    color: #fff;
+}
+.menu__link:hover, .select {
+    background: white;
+    color: #3F49DB;
+}
+.mostrar {
+    left: 0;
+}
+
+/*----------estilos del banner-------*/
+
+.todo {
+    margin-top: -60px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.todo .banner {
+    margin-top: -60px;
+    position: relative;
+    z-index: -1000;
+    margin-bottom: 20px;
+}
+.todo .btnmap {
+    display: block;
+    position: absolute;
+    top: 65%;
+    width: 60px;
+    height: 60px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+           
+}
+.banner .contenedor{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+    color: #fff;
+    text-align: center;
+}
+
+.banner__txt {
+    display: none;
+}
+.todo .contenedor2 {
+    position: absolute;
+    top: 73%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #fff;
+    text-align: center;
+}
+
+
+/*--------------Estilos de informacion---------*/
+.info__columna{
+    background: #3F49DB;
+    color: #fff;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+/*--------------Estilos de informacion---------*/
+.footer {
+    background: #A1A5E0;
+    color: black;
+    padding: 10px;
+    text-align: center;
+
+}
+.footer .social[class^="icon-"]{
+    display: inline-block;
+    color: #A1A5E0;
+    text-decoration: none;
+    font-size:30px;
+    padding: 10px;
+    background: black;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 40px;
+
+}
+/*----------Estilos Responsive--------*/
+@media(min-width: 480px) {
+    .logo{
+        font-size: 60px;
+        }
+    .banner__titulo {
+        font-size: 30px;
+        margin: 5px 0;
+    }
+    .banner__txt{
+        display: block;
+        font-size: 18px;
+        margin: 7px 0;
+    }
+    .info {
+        display: flex;
+        justify-content: space-between;
+        margin-top: -50px;
+    }
+    .info__columna {
+        width: 32%;
+    }
+    .footer .social[class^="icon-"]{
+        margin: 0 10px;
+    }
+}
+@media(min-width:768px){
+    .nav {
+        position: static;
+        width: auto;
+    }
+    .menu {
+        display: flex;
+    }
+    .icon-menu {
+        display: none;
+    }
+    .menu__link {
+        background: none;
+        font-size: 15px;
+    }
+    .select {
+        color: #fff;
+        background: #3F49DB;
+    }
+
+    .banner__titulo{
+        font-size: 30px;
+    }
+
+}
